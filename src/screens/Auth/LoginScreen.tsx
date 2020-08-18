@@ -1,77 +1,211 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView,
+} from 'react-native';
 import {Icons, Input, Button, Link} from 'components';
-import {COLORS} from 'styles/Colors';
 import {CONSTANTS, STYLES} from 'styles/Theme';
 import {observer} from 'mobx-react';
 import {LangModel} from 'models';
 
-export const LoginScreen = observer(function () {
+const Header = observer(({title, span}: {title: string; span: string}) => {
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.wrapper}>
-        <Icons.Logo />
-        <Text style={[STYLES.title, styles.title]}>
-          {LangModel.rk('Добро пожаловать в RNShop')}
-        </Text>
-        <Text style={STYLES.span}>
-          {LangModel.rk('Войдите, чтобы продолжить')}
-        </Text>
-        <View style={styles.form}>
-          <Input
-            placeholder={LangModel.rk('Почта')}
-            leftContent={<Icons.Email />}
-          />
-          <View style={STYLES.delimiterSmall} />
-          <Input
-            placeholder={LangModel.rk('Пароль')}
-            leftContent={<Icons.Lock />}
-            secureTextEntry
-          />
-          <View style={STYLES.delimiterBig} />
-          <Button
-            title={LangModel.rk('Войти')}
-            onPress={() => {
-              LangModel.changeLang('ru');
-            }}
-          />
+    <>
+      <Icons.Logo />
+      <Text style={[STYLES.title, styles.title]}>{title}</Text>
+      <Text style={STYLES.span}>{span}</Text>
+    </>
+  );
+});
 
-          <View style={styles.footer}>
-            <Link
-              title={LangModel.rk('Забыли пароль?')}
-              onPress={() => {
-                LangModel.changeLang('ru');
-              }}
-            />
-            <View style={styles.regContent}>
-              <Text style={styles.regTitle}>
-                {LangModel.rk('Нет учетной записи?')}{' '}
-              </Text>
-              <Link
-                title={LangModel.rk('Регистрация')}
-                onPress={() => {
-                  LangModel.changeLang('ru');
-                }}
-              />
-            </View>
-          </View>
-        </View>
+const Login = observer(() => {
+  return (
+    <>
+      <Header
+        title={LangModel.rk('Добро пожаловать в RNShop')}
+        span={LangModel.rk('Войдите, чтобы продолжить')}
+      />
+      <View style={styles.form}>
+        <Input
+          placeholder={LangModel.rk('Почта')}
+          leftContent={<Icons.Email />}
+        />
+        <View style={STYLES.delimiterBig} />
+        <Input
+          placeholder={LangModel.rk('Пароль')}
+          leftContent={<Icons.Lock />}
+          secureTextEntry
+        />
+        <View style={STYLES.delimiterBig} />
+        <Button
+          title={LangModel.rk('Войти')}
+          onPress={() => {
+            LangModel.changeLang('ru');
+          }}
+        />
       </View>
-    </SafeAreaView>
+    </>
+  );
+});
+
+const Reg = observer(() => {
+  return (
+    <>
+      <Header
+        title={LangModel.rk('Давайте начнем')}
+        span={LangModel.rk('Создать новый аккаунт')}
+      />
+      <View style={styles.form}>
+        <Input
+          placeholder={LangModel.rk('Фамилия')}
+          leftContent={<Icons.User />}
+        />
+        <View style={STYLES.delimiterSmall} />
+        <Input placeholder={LangModel.rk('Имя')} leftContent={<Icons.User />} />
+        <View style={STYLES.delimiterSmall} />
+        <Input
+          placeholder={LangModel.rk('Почта')}
+          leftContent={<Icons.Email />}
+        />
+        <View style={STYLES.delimiterSmall} />
+        <Input
+          placeholder={LangModel.rk('Пароль')}
+          leftContent={<Icons.Lock />}
+          secureTextEntry
+        />
+        <View style={STYLES.delimiterSmall} />
+        <Input
+          placeholder={LangModel.rk('Повторите пароль')}
+          leftContent={<Icons.Lock />}
+          secureTextEntry
+        />
+        <View style={STYLES.delimiterBig} />
+        <Button
+          title={LangModel.rk('Зарегистрироваться')}
+          onPress={() => {
+            LangModel.changeLang('ru');
+          }}
+        />
+      </View>
+    </>
+  );
+});
+
+const Recovery = observer(() => {
+  return (
+    <>
+      <Header
+        title={LangModel.rk('Забыли пароль?')}
+        span={LangModel.rk('Восстановление пароля')}
+      />
+      <View style={styles.form}>
+        <Input
+          placeholder={LangModel.rk('Почта')}
+          leftContent={<Icons.Email />}
+        />
+        <View style={STYLES.delimiterBig} />
+        <Button
+          title={LangModel.rk('Восстановить')}
+          onPress={() => {
+            LangModel.changeLang('ru');
+          }}
+        />
+      </View>
+    </>
+  );
+});
+
+export const LoginScreen = observer(() => {
+  const [content, setContent] = React.useState<'login' | 'reg' | 'recovery'>(
+    'login',
+  );
+  return (
+    <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
+      <View style={STYLES.container}>
+        <ScrollView
+          style={styles.scroll}
+          scrollEventThrottle={16}
+          keyboardShouldPersistTaps="handled">
+          <View style={styles.wrapper}>
+            {content === 'login' ? (
+              <>
+                <Login />
+                <View style={styles.footer}>
+                  <Link
+                    title={LangModel.rk('Забыли пароль?')}
+                    onPress={() => {
+                      setContent('recovery');
+                    }}
+                  />
+                  <View style={styles.regContent}>
+                    <Text style={styles.regTitle}>
+                      {LangModel.rk('Нет учетной записи?')}{' '}
+                    </Text>
+                    <Link
+                      title={LangModel.rk('Регистрация')}
+                      onPress={() => {
+                        setContent('reg');
+                      }}
+                    />
+                  </View>
+                </View>
+              </>
+            ) : content === 'reg' ? (
+              <>
+                <Reg />
+                <View style={styles.regContent}>
+                  <Text style={styles.regTitle}>
+                    {LangModel.rk('Есть аккаунт?')}{' '}
+                  </Text>
+                  <Link
+                    title={LangModel.rk('Войти')}
+                    onPress={() => {
+                      setContent('login');
+                    }}
+                  />
+                </View>
+              </>
+            ) : (
+              <>
+                <Recovery />
+                <View style={styles.regContent}>
+                  <Text style={styles.regTitle}>
+                    {LangModel.rk('Есть аккаунт?')}{' '}
+                  </Text>
+                  <Link
+                    title={LangModel.rk('Войти')}
+                    onPress={() => {
+                      setContent('login');
+                    }}
+                  />
+                </View>
+              </>
+            )}
+          </View>
+          <View style={styles.scrollFooter} />
+        </ScrollView>
+      </View>
+    </KeyboardAvoidingView>
   );
 });
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.backgroundColor,
-  },
-
   wrapper: {
     paddingHorizontal: CONSTANTS.paddingContent,
-    flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+
+  scroll: {
     paddingTop: 80,
+  },
+
+  scrollFooter: {
+    height: 100,
   },
 
   title: {

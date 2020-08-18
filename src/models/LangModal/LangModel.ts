@@ -2,12 +2,6 @@ import {NativeModules, Platform} from 'react-native';
 import {observable, action} from 'mobx';
 import en from './en';
 
-interface UserInfo {
-  email: string;
-  group: number;
-  id: string;
-}
-
 class LangModel {
   @observable
   lang = 'ru';

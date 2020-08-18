@@ -9,6 +9,10 @@ export const CONSTANTS = {
 };
 
 export const STYLES = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: COLORS.backgroundColor,
+  },
   delimiterSmall: {
     height: 8,
   },

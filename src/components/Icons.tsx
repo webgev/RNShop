@@ -69,4 +69,17 @@ const Lock = (props: SvgProps) => {
   );
 };
 
-export default {Logo, Eye, Email, Lock};
+const User = (props: SvgProps) => {
+  return (
+    <Svg width={20} height={20} viewBox="0 0 20 20" fill="none" {...props}>
+      <Path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M10 2a2.902 2.902 0 100 5.805A2.902 2.902 0 0010 2zM5.098 4.903a4.902 4.902 0 119.804 0 4.902 4.902 0 01-9.804 0zM7.518 13.39A5.518 5.518 0 002 18.908V19a1 1 0 11-2 0v-.09a7.518 7.518 0 017.518-7.519h4.964A7.518 7.518 0 0120 18.908V19a1 1 0 11-2 0v-.09a5.518 5.518 0 00-5.518-5.519H7.518z"
+        fill={COLORS.grey}
+      />
+    </Svg>
+  );
+};
+
+export default {Logo, Eye, Email, Lock, User};
