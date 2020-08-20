@@ -10,14 +10,18 @@ const textColor = ColorTheme({
   light: 'black',
 });
 
-const inputBorder = '#EBF0FF';
-const inputFocusBorder = '#B6C8FF';
-
 const mainColor = '#40BFFF';
 const mainColor2 = '#00AAFF';
 const buttonTextColor = '#ffffff';
 
 const grey = '#9098B1';
+const greyLight = '#EBF0FF';
+const greyDark = '#223263';
+
+const inputBorder = greyLight;
+const inputFocusBorder = '#B6C8FF';
+
+const tabBarBackgroundColor = '#ffffff';
 
 export const COLORS = {
   backgroundColor,
@@ -28,4 +32,7 @@ export const COLORS = {
   inputBorder,
   inputFocusBorder,
   grey,
+  greyLight,
+  greyDark,
+  tabBarBackgroundColor,
 };

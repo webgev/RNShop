@@ -39,6 +39,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: 50,
+    shadowColor: COLORS.mainColor,
+    shadowOpacity: 0.25,
+    shadowOffset: {width: 0, height: 10},
+    shadowRadius: 30,
   },
   contentPress: {
     backgroundColor: COLORS.mainColor2,

@@ -5,11 +5,13 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ScrollView,
+  SafeAreaView,
 } from 'react-native';
 import {Icons, Input, Button, Link} from 'components';
 import {CONSTANTS, STYLES} from 'styles/Theme';
 import {observer} from 'mobx-react';
 import {LangModel} from 'models';
+import {IScreenProps} from 'utils/Interfaces';
 
 const Header = observer(({title, span}: {title: string; span: string}) => {
   return (
@@ -31,6 +33,7 @@ const Login = observer(() => {
       <View style={styles.form}>
         <Input
           placeholder={LangModel.rk('Почта')}
+          keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterBig} />
@@ -68,6 +71,7 @@ const Reg = observer(() => {
         <View style={STYLES.delimiterSmall} />
         <Input
           placeholder={LangModel.rk('Почта')}
+          keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterSmall} />
@@ -104,6 +108,7 @@ const Recovery = observer(() => {
       <View style={styles.form}>
         <Input
           placeholder={LangModel.rk('Почта')}
+          keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterBig} />
@@ -118,77 +123,86 @@ const Recovery = observer(() => {
   );
 });
 
-export const LoginScreen = observer(() => {
+export const LoginScreen = observer((props: IScreenProps) => {
   const [content, setContent] = React.useState<'login' | 'reg' | 'recovery'>(
     'login',
   );
   return (
-    <KeyboardAvoidingView style={{flex: 1}} behavior="padding">
-      <View style={STYLES.container}>
-        <ScrollView
-          style={styles.scroll}
-          scrollEventThrottle={16}
-          keyboardShouldPersistTaps="handled">
-          <View style={styles.wrapper}>
-            {content === 'login' ? (
-              <>
-                <Login />
-                <View style={styles.footer}>
-                  <Link
-                    title={LangModel.rk('Забыли пароль?')}
-                    onPress={() => {
-                      setContent('recovery');
-                    }}
-                  />
+    <>
+      <KeyboardAvoidingView style={STYLES.container} behavior="padding">
+        <SafeAreaView style={styles.close}>
+          <Icons.Close
+            onPress={() => {
+              props.navigation.goBack();
+            }}
+          />
+        </SafeAreaView>
+        <View style={STYLES.container}>
+          <ScrollView
+            style={styles.scroll}
+            scrollEventThrottle={16}
+            keyboardShouldPersistTaps="handled">
+            <View style={styles.wrapper}>
+              {content === 'login' ? (
+                <>
+                  <Login />
+                  <View style={styles.footer}>
+                    <Link
+                      title={LangModel.rk('Забыли пароль?')}
+                      onPress={() => {
+                        setContent('recovery');
+                      }}
+                    />
+                    <View style={styles.regContent}>
+                      <Text style={styles.regTitle}>
+                        {LangModel.rk('Нет учетной записи?')}{' '}
+                      </Text>
+                      <Link
+                        title={LangModel.rk('Регистрация')}
+                        onPress={() => {
+                          setContent('reg');
+                        }}
+                      />
+                    </View>
+                  </View>
+                </>
+              ) : content === 'reg' ? (
+                <>
+                  <Reg />
                   <View style={styles.regContent}>
                     <Text style={styles.regTitle}>
-                      {LangModel.rk('Нет учетной записи?')}{' '}
+                      {LangModel.rk('Есть аккаунт?')}{' '}
                     </Text>
                     <Link
-                      title={LangModel.rk('Регистрация')}
+                      title={LangModel.rk('Войти')}
                       onPress={() => {
-                        setContent('reg');
+                        setContent('login');
                       }}
                     />
                   </View>
-                </View>
-              </>
-            ) : content === 'reg' ? (
-              <>
-                <Reg />
-                <View style={styles.regContent}>
-                  <Text style={styles.regTitle}>
-                    {LangModel.rk('Есть аккаунт?')}{' '}
-                  </Text>
-                  <Link
-                    title={LangModel.rk('Войти')}
-                    onPress={() => {
-                      setContent('login');
-                    }}
-                  />
-                </View>
-              </>
-            ) : (
-              <>
-                <Recovery />
-                <View style={styles.regContent}>
-                  <Text style={styles.regTitle}>
-                    {LangModel.rk('Есть аккаунт?')}{' '}
-                  </Text>
-                  <Link
-                    title={LangModel.rk('Войти')}
-                    onPress={() => {
-                      setContent('login');
-                    }}
-                  />
-                </View>
-              </>
-            )}
-          </View>
-          <View style={styles.scrollFooter} />
-        </ScrollView>
-      </View>
-    </KeyboardAvoidingView>
+                </>
+              ) : (
+                <>
+                  <Recovery />
+                  <View style={styles.regContent}>
+                    <Text style={styles.regTitle}>
+                      {LangModel.rk('Есть аккаунт?')}{' '}
+                    </Text>
+                    <Link
+                      title={LangModel.rk('Войти')}
+                      onPress={() => {
+                        setContent('login');
+                      }}
+                    />
+                  </View>
+                </>
+              )}
+            </View>
+            <View style={styles.scrollFooter} />
+          </ScrollView>
+        </View>
+      </KeyboardAvoidingView>
+    </>
   );
 });
 
@@ -230,5 +244,11 @@ const styles = StyleSheet.create({
 
   regTitle: {
     fontSize: CONSTANTS.sizeM,
+  },
+
+  close: {
+    position: 'absolute',
+    right: 20,
+    zIndex: 1,
   },
 });

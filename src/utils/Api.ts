@@ -1,4 +1,5 @@
 import axios, {AxiosRequestConfig} from 'axios';
+import {IUserInfo} from './Interfaces';
 
 const URI = '';
 const STATIC_URI = '';
@@ -73,8 +74,8 @@ export class Api {
     }
   };
 
-  static getUserInfo = async <T>() => {
-    const res = await Api.invoke<T>('users/show');
+  static getUserInfo = async () => {
+    const res = await Api.invoke<{user: IUserInfo}>('users/show');
     if (res?.code === 200) {
       return res.payload;
     }

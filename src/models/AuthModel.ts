@@ -2,12 +2,7 @@ import {observable, action} from 'mobx';
 import {Api} from 'utils/Api';
 import AsyncStorage from '@react-native-community/async-storage';
 import {EventRegister} from 'utils/Events';
-
-interface UserInfo {
-  email: string;
-  group: number;
-  id: string;
-}
+import {IUserInfo} from 'utils/Interfaces';
 
 const STORAGE_AUTH_TOKEN = 'song@auhtToken';
 
@@ -17,7 +12,7 @@ class AuthModel {
   @observable
   session = '';
   @observable
-  userInfo: UserInfo | undefined;
+  userInfo: IUserInfo | undefined;
 
   @action
   login = async (email: string, password: string) => {
@@ -46,7 +41,7 @@ class AuthModel {
     const token = await AsyncStorage.getItem(STORAGE_AUTH_TOKEN);
     if (token) {
       Api.setAuthorizationHeader(token);
-      const user = await Api.getUserInfo<{user: UserInfo}>();
+      const user = await Api.getUserInfo();
       if (user) {
         this.userInfo = user?.user;
         this.isAuth = true;
