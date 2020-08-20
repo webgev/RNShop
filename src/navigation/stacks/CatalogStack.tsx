@@ -1,17 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {CartScreen, ProductCardScreen} from 'screens';
+import {CatalogScreen, ProductListScreen} from 'screens';
 import {CONSTANTS} from 'utils/Constants';
 
 const Stack = createStackNavigator();
 
-export function CartStack() {
+export function CatalogStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Cart"
+      initialRouteName="Catalog"
       screenOptions={CONSTANTS.headerOptions}>
-      <Stack.Screen name="Cart" component={CartScreen} />
-      <Stack.Screen name="ProductCard" component={ProductCardScreen} />
+      <Stack.Screen name="Catalog" component={CatalogScreen} />
+      <Stack.Screen name="ProductList" component={ProductListScreen} />
     </Stack.Navigator>
   );
 }

@@ -1,14 +1,6 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from './Colors';
-
-export const CONSTANTS = {
-  paddingContent: 16,
-  sizeS: 12,
-  sizeM: 14,
-  sizeL: 16,
-  sizeXL: 18,
-  sizeXXL: 18,
-};
+import {CONSTANTS} from 'utils/Constants';
 
 export const STYLES = StyleSheet.create({
   container: {

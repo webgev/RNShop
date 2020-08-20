@@ -1,12 +1,20 @@
 import React from 'react';
-import {StyleProp, Text, Pressable, TextStyle, StyleSheet} from 'react-native';
+import {
+  StyleProp,
+  Text,
+  Pressable,
+  TextStyle,
+  StyleSheet,
+  ViewStyle,
+} from 'react-native';
 import {COLORS} from 'styles/Colors';
-import { CONSTANTS } from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 
 interface Props {
   title: string;
   onPress?: () => any;
   style?: StyleProp<TextStyle>;
+  containerStyle?: StyleProp<ViewStyle>;
   size?: 's' | 'm' | 'l';
 }
 
@@ -23,7 +31,7 @@ export const Link = (props: Props) => {
     <Pressable
       onPress={props.onPress}
       onPressIn={() => setActive(true)}
-      style={{height: 16}}
+      style={[styles.container, props.containerStyle]}
       onPressOut={() => setActive(false)}>
       <Text
         style={[
@@ -39,6 +47,9 @@ export const Link = (props: Props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    height: 16,
+  },
   title: {
     color: COLORS.mainColor,
   },

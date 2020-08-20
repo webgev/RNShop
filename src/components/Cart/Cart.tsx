@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
-import {STYLES, CONSTANTS} from 'styles/Theme';
+import {STYLES} from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 import {CartItem} from 'components/Cart';
 import {IProduct} from 'utils/Interfaces';
 import {FlatList} from 'react-native-gesture-handler';

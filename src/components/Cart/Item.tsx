@@ -9,7 +9,8 @@ import {
   ViewStyle,
   TouchableOpacity,
 } from 'react-native';
-import {STYLES, CONSTANTS} from 'styles/Theme';
+import {STYLES} from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 import {COLORS} from 'styles/Colors';
 import {Icons} from 'components';
 import {IProduct} from 'utils/Interfaces';

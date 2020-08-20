@@ -14,3 +14,11 @@ export interface IUserInfo {
   group: number;
   id: string;
 }
+
+export interface ICategory {
+  category_id: string;
+  children: ICategory[];
+  name: string;
+  parent_id: string;
+  thumb: string;
+}

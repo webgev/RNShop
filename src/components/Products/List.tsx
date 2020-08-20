@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import {Item} from './Item';
 import {HeaderList} from './HeaderList';
+import {CONSTANTS} from 'utils/Constants';
 
 const {width} = Dimensions.get('window');
 
@@ -59,13 +60,13 @@ export function List(props: Props) {
 
 const styles = StyleSheet.create({
   list: {
-    paddingHorizontal: 16,
+    paddingHorizontal: CONSTANTS.paddingContent,
   },
   listWrapper: {
     justifyContent: 'space-between',
   },
   item: {
     marginVertical: 8,
-    marginRight: 16,
+    marginRight: CONSTANTS.paddingContent,
   },
 });

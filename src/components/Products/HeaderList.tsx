@@ -9,7 +9,8 @@ import {
   ViewStyle,
 } from 'react-native';
 import {COLORS} from 'styles/Colors';
-import {STYLES, CONSTANTS} from 'styles/Theme';
+import {STYLES} from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 
 interface Props {
   title: string;

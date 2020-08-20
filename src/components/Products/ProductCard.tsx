@@ -2,7 +2,8 @@ import React from 'react';
 import {View, StyleSheet, Text, ScrollView, Pressable} from 'react-native';
 import {observer} from 'mobx-react';
 import {COLORS} from 'styles/Colors';
-import {STYLES, CONSTANTS} from 'styles/Theme';
+import {STYLES} from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 import {Slider, Button} from 'components';
 
 const data = [

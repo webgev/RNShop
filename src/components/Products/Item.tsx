@@ -26,7 +26,9 @@ export function Item(props: Props) {
       activeOpacity={0.8}
       style={[styles.container, props.style]}
       onPress={() => {
-        NavigationControl.navigate('ProductCard');
+        NavigationControl.navigate('ProductCard', {
+          title: 'Nike Air Max 270 React ENG',
+        });
       }}
       onLayout={(event) => {
         setWidthContainer(event.nativeEvent.layout.width);

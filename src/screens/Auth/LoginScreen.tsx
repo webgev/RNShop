@@ -8,7 +8,8 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {Icons, Input, Button, Link} from 'components';
-import {CONSTANTS, STYLES} from 'styles/Theme';
+import {STYLES} from 'styles/Theme';
+import {CONSTANTS} from 'utils/Constants';
 import {observer} from 'mobx-react';
 import {LangModel} from 'models';
 import {IScreenProps} from 'utils/Interfaces';

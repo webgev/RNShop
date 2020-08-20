@@ -4,3 +4,4 @@ export {UserScreen} from './UserScreen';
 export {ProductCardScreen} from './ProductCardScreen';
 export {ProductListScreen} from './ProductListScreen';
 export {CartScreen} from './CartScreen';
+export {CatalogScreen} from './CatalogScreen';
