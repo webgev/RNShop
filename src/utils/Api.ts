@@ -1,14 +1,10 @@
 import axios, {AxiosRequestConfig} from 'axios';
-import {IUserInfo} from './Interfaces';
+import {IUserInfo, ICategory} from './Interfaces';
 
-const URI = '';
+const URI = 'https://app.buymeua.com/index.php?route=';
 const STATIC_URI = '';
-
-interface Response<T> {
-  code: number;
-  payload: T;
-  message?: string;
-}
+const TOKEN =
+  '31b5MAVbxTGSkNC5xXvQD8XlXfLV1vziJ6eWXoR6MYQneVFPMghJncsv2aje2FylMrw0n7UesN8NS5odcImVDJ2THUCuGnxrITjuCoxhqT4tRYW8uOmgotqCeLhp1Ue8ciEhALjNlcmRxrkAYXdAvuN1wfQ3eAfgBxWmOejh3h3ruoEW3JMn2zXzMlU725T6eMVbCmOsWCSC5ZeWacqU5SO0tJWjFGjLo3Vq7Xo7q2Ti56G3JsrrKdXXEvWaUhtH';
 
 export class Api {
   static async invoke<T>(
@@ -20,15 +16,15 @@ export class Api {
     try {
       options = options || {};
       options.params = params;
-      let url = URI + endpoint;
+      let url = URI + endpoint + '&token=' + TOKEN;
       let response;
       if (__DEV__) {
         console.log(url, params, options);
       }
       if (method === 'get') {
-        response = await axios.get<Response<T>>(url, options);
+        response = await axios.get<T>(url, options);
       } else {
-        response = await axios.post<Response<T>>(url, params, options);
+        response = await axios.post<T>(url, params, options);
       }
 
       let responseJsonData = await response.data;
@@ -79,5 +75,21 @@ export class Api {
     if (res?.code === 200) {
       return res.payload;
     }
+  };
+
+  static getLatestsProducts = async (limit = 20, page = 1) => {
+    return [];
+  };
+
+  static getActionsProducts = async (limit = 20, page = 1) => {
+    return [];
+  };
+
+  static getCatogories = async () => {
+    const res = await Api.invoke<ICategory[]>('api/category/categories');
+    if (res && res.length) {
+      return res[0].children;
+    }
+    return [];
   };
 }

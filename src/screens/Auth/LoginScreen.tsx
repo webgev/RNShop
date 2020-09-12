@@ -1,13 +1,12 @@
 import React from 'react';
 import {
   View,
-  Text,
   StyleSheet,
   KeyboardAvoidingView,
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import {Icons, Input, Button, Link} from 'components';
+import {Icons, Input, Button, Link, Text} from 'components';
 import {STYLES} from 'styles/Theme';
 import {CONSTANTS} from 'utils/Constants';
 import {observer} from 'mobx-react';
@@ -18,8 +17,8 @@ const Header = observer(({title, span}: {title: string; span: string}) => {
   return (
     <>
       <Icons.Logo />
-      <Text style={[STYLES.title, styles.title]}>{title}</Text>
-      <Text style={STYLES.span}>{span}</Text>
+      <Text style={[STYLES.title, styles.title]} text={title} />
+      <Text style={STYLES.span} text={span} />
     </>
   );
 });
@@ -28,24 +27,24 @@ const Login = observer(() => {
   return (
     <>
       <Header
-        title={LangModel.rk('Добро пожаловать в RNShop')}
-        span={LangModel.rk('Войдите, чтобы продолжить')}
+        title="Добро пожаловать в RNShop"
+        span="Войдите, чтобы продолжить"
       />
       <View style={styles.form}>
         <Input
-          placeholder={LangModel.rk('Почта')}
+          placeholder="Почта"
           keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterBig} />
         <Input
-          placeholder={LangModel.rk('Пароль')}
+          placeholder="Пароль"
           leftContent={<Icons.Lock />}
           secureTextEntry
         />
         <View style={STYLES.delimiterBig} />
         <Button
-          title={LangModel.rk('Войти')}
+          title="Войти"
           onPress={() => {
             LangModel.changeLang('ru');
           }}
@@ -58,38 +57,32 @@ const Login = observer(() => {
 const Reg = observer(() => {
   return (
     <>
-      <Header
-        title={LangModel.rk('Давайте начнем')}
-        span={LangModel.rk('Создать новый аккаунт')}
-      />
+      <Header title="Давайте начнем" span="Создать новый аккаунт" />
       <View style={styles.form}>
-        <Input
-          placeholder={LangModel.rk('Фамилия')}
-          leftContent={<Icons.User />}
-        />
+        <Input placeholder="Фамилия" leftContent={<Icons.User />} />
         <View style={STYLES.delimiterSmall} />
-        <Input placeholder={LangModel.rk('Имя')} leftContent={<Icons.User />} />
+        <Input placeholder="Имя" leftContent={<Icons.User />} />
         <View style={STYLES.delimiterSmall} />
         <Input
-          placeholder={LangModel.rk('Почта')}
+          placeholder="Почта"
           keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterSmall} />
         <Input
-          placeholder={LangModel.rk('Пароль')}
+          placeholder="Пароль"
           leftContent={<Icons.Lock />}
           secureTextEntry
         />
         <View style={STYLES.delimiterSmall} />
         <Input
-          placeholder={LangModel.rk('Повторите пароль')}
+          placeholder="Повторите пароль"
           leftContent={<Icons.Lock />}
           secureTextEntry
         />
         <View style={STYLES.delimiterBig} />
         <Button
-          title={LangModel.rk('Зарегистрироваться')}
+          title="Зарегистрироваться"
           onPress={() => {
             LangModel.changeLang('ru');
           }}
@@ -102,19 +95,16 @@ const Reg = observer(() => {
 const Recovery = observer(() => {
   return (
     <>
-      <Header
-        title={LangModel.rk('Забыли пароль?')}
-        span={LangModel.rk('Восстановление пароля')}
-      />
+      <Header title="Забыли пароль?" span="Восстановление пароля" />
       <View style={styles.form}>
         <Input
-          placeholder={LangModel.rk('Почта')}
+          placeholder="Почта"
           keyboardType="email-address"
           leftContent={<Icons.Email />}
         />
         <View style={STYLES.delimiterBig} />
         <Button
-          title={LangModel.rk('Восстановить')}
+          title="Восстановить"
           onPress={() => {
             LangModel.changeLang('ru');
           }}
@@ -149,17 +139,18 @@ export const LoginScreen = observer((props: IScreenProps) => {
                   <Login />
                   <View style={styles.footer}>
                     <Link
-                      title={LangModel.rk('Забыли пароль?')}
+                      title="Забыли пароль"
                       onPress={() => {
                         setContent('recovery');
                       }}
                     />
                     <View style={styles.regContent}>
-                      <Text style={styles.regTitle}>
-                        {LangModel.rk('Нет учетной записи?')}{' '}
-                      </Text>
+                      <Text
+                        style={styles.regTitle}
+                        text="Нет учетной записи?"
+                      />
                       <Link
-                        title={LangModel.rk('Регистрация')}
+                        title="Регистрация"
                         onPress={() => {
                           setContent('reg');
                         }}
@@ -171,11 +162,9 @@ export const LoginScreen = observer((props: IScreenProps) => {
                 <>
                   <Reg />
                   <View style={styles.regContent}>
-                    <Text style={styles.regTitle}>
-                      {LangModel.rk('Есть аккаунт?')}{' '}
-                    </Text>
+                    <Text style={styles.regTitle} text="Есть аккаунт" />
                     <Link
-                      title={LangModel.rk('Войти')}
+                      title="Войти"
                       onPress={() => {
                         setContent('login');
                       }}
@@ -186,11 +175,9 @@ export const LoginScreen = observer((props: IScreenProps) => {
                 <>
                   <Recovery />
                   <View style={styles.regContent}>
-                    <Text style={styles.regTitle}>
-                      {LangModel.rk('Есть аккаунт?')}{' '}
-                    </Text>
+                    <Text style={styles.regTitle} text="Есть аккаунт" />
                     <Link
-                      title={LangModel.rk('Войти')}
+                      title="Войти"
                       onPress={() => {
                         setContent('login');
                       }}
@@ -245,6 +232,7 @@ const styles = StyleSheet.create({
 
   regTitle: {
     fontSize: CONSTANTS.sizeM,
+    paddingRight: 4,
   },
 
   close: {

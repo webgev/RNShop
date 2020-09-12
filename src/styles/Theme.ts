@@ -7,6 +7,15 @@ export const STYLES = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.backgroundColor,
   },
+  wrapper: {
+    paddingTop: CONSTANTS.paddingContent,
+    flex: 1,
+  },
+  contentCenter: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   delimiterSmall: {
     height: 8,
   },

@@ -210,4 +210,39 @@ const Munis = (props: SvgProps) => {
   );
 };
 
-export default {Logo, Eye, Email, Lock, User, Home, Cart, Close, Plus, Munis};
+const Search = (props: SvgProps) => (
+  <Svg
+    width={14}
+    height={14}
+    viewBox="0 0 14 14"
+    fill="none"
+    color={COLORS.grey}
+    {...props}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M6.25 2a4.25 4.25 0 100 8.5 4.25 4.25 0 000-8.5zM0 6.25a6.25 6.25 0 1112.5 0 6.25 6.25 0 01-12.5 0z"
+      fill="currentColor"
+    />
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M9.293 9.293a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414z"
+      fill="currentColor"
+    />
+  </Svg>
+);
+
+export default {
+  Logo,
+  Eye,
+  Email,
+  Lock,
+  User,
+  Home,
+  Cart,
+  Close,
+  Plus,
+  Munis,
+  Search,
+};

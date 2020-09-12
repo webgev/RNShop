@@ -3,6 +3,7 @@ import {IScreenProps} from 'utils/Interfaces';
 import {List} from 'components/Products';
 import {Container} from 'components/Layout/Container';
 import {ScrollView} from 'react-native';
+import {LangModel} from 'models';
 
 export function HomeScreen(props: IScreenProps) {
   React.useEffect(() => {
@@ -15,10 +16,10 @@ export function HomeScreen(props: IScreenProps) {
         <List
           numColumns={2.2}
           horizontal
-          headerTitle="Новинки"
+          headerTitle={LangModel.rk('Новинки')}
           onPressHeaderMore={() => {
             props.navigation.push('ProductList', {
-              title: 'Новинки',
+              title: LangModel.rk('Новинки'),
               type: 'latest',
             });
           }}
@@ -26,10 +27,10 @@ export function HomeScreen(props: IScreenProps) {
         <List
           numColumns={2.2}
           horizontal
-          headerTitle="Акции"
+          headerTitle={LangModel.rk('Акции')}
           onPressHeaderMore={() => {
             props.navigation.push('ProductList', {
-              title: 'Акции',
+              title: LangModel.rk('Акции'),
               type: 'action',
             });
           }}

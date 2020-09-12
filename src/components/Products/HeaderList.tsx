@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   View,
-  Text,
   TouchableOpacity,
   StyleSheet,
   GestureResponderEvent,
@@ -11,6 +10,7 @@ import {
 import {COLORS} from 'styles/Colors';
 import {STYLES} from 'styles/Theme';
 import {CONSTANTS} from 'utils/Constants';
+import {Text} from 'components';
 
 interface Props {
   title: string;
@@ -21,13 +21,13 @@ interface Props {
 export function HeaderList(props: Props) {
   return (
     <View style={[styles.header, props.style]}>
-      <Text style={STYLES.title}>{props.title}</Text>
+      <Text style={STYLES.title} text={props.title} />
       {props.onPressMore && (
         <TouchableOpacity
           style={styles.moreContent}
           activeOpacity={0.8}
           onPress={props.onPressMore}>
-          <Text style={styles.more}>Еще</Text>
+          <Text style={styles.more} text="Еще" />
         </TouchableOpacity>
       )}
     </View>

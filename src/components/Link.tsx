@@ -1,7 +1,6 @@
 import React from 'react';
 import {
   StyleProp,
-  Text,
   Pressable,
   TextStyle,
   StyleSheet,
@@ -9,6 +8,7 @@ import {
 } from 'react-native';
 import {COLORS} from 'styles/Colors';
 import {CONSTANTS} from 'utils/Constants';
+import {Text} from './Text';
 
 interface Props {
   title: string;
@@ -39,9 +39,9 @@ export const Link = (props: Props) => {
           sizeStyle,
           props.style,
           active && styles.titleActive,
-        ]}>
-        {props.title}
-      </Text>
+        ]}
+        text={props.title}
+      />
     </Pressable>
   );
 };

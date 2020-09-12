@@ -23,7 +23,10 @@ class LangModel {
     this.lang = lang;
   }
 
-  rk(text: string) {
+  rk(text?: string) {
+    if (!text) {
+      return text;
+    }
     if (this.lang === 'ru') {
       return text;
     }

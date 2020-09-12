@@ -11,6 +11,7 @@ const en: any = {
   'Создать новый аккаунт': 'Create an new account',
   'Давайте начнем': 'Let’s Get Started',
   Зарегистрироваться: 'Sign Up',
+  Главная: 'Home',
 };
 
 export default en;

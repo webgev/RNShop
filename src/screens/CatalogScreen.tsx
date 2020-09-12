@@ -1,12 +1,13 @@
 import React from 'react';
-import {FlatList, StyleSheet} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 import {Container} from 'components/Layout/Container';
 import {CategoryModel} from 'models';
 import {ICategory, IScreenProps} from 'utils/Interfaces';
 import {observer} from 'mobx-react';
-import {Link} from 'components';
+import {Link, Search} from 'components';
 import {CONSTANTS} from 'utils/Constants';
 import {COLORS} from 'styles/Colors';
+import {STYLES} from 'styles/Theme';
 
 export const CatalogScreen = observer((props: IScreenProps) => {
   const categories = props.route.params?.categories;
@@ -36,10 +37,13 @@ export const CatalogScreen = observer((props: IScreenProps) => {
 
   return (
     <Container>
-      <FlatList
-        data={categories || CategoryModel.categories}
-        renderItem={renderItem}
-      />
+      <View style={STYLES.wrapper}>
+        {!categories && <Search />}
+        <FlatList
+          data={categories || CategoryModel.categories}
+          renderItem={renderItem}
+        />
+      </View>
     </Container>
   );
 });

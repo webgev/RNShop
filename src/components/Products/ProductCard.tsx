@@ -4,7 +4,7 @@ import {observer} from 'mobx-react';
 import {COLORS} from 'styles/Colors';
 import {STYLES} from 'styles/Theme';
 import {CONSTANTS} from 'utils/Constants';
-import {Slider, Button} from 'components';
+import {Slider, Button, Text as LText} from 'components';
 
 const data = [
   {
@@ -32,9 +32,10 @@ export const ProductCard = observer(() => {
         <Text style={[STYLES.price, STYLES.textXXL]}>$299,43</Text>
         <View style={STYLES.delimiter24} />
       </View>
-      <Text style={[STYLES.title, STYLES.paddingHorizontal]}>
-        Выберете размер
-      </Text>
+      <LText
+        style={[STYLES.title, STYLES.paddingHorizontal]}
+        text="Выберете размер"
+      />
       <View style={STYLES.delimiterBig} />
       <ScrollView
         horizontal={true}

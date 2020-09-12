@@ -4,20 +4,22 @@ import {
   StyleSheet,
   TextInputProps,
   View,
-  TouchableOpacity,
   StyleProp,
   ViewStyle,
+  Pressable,
 } from 'react-native';
 import {COLORS} from 'styles/Colors';
 import Icons from './Icons';
+import {observer} from 'mobx-react';
+import {LangModel} from 'models';
 
 interface Props extends TextInputProps {
   containerStyle?: StyleProp<ViewStyle>;
-  leftContent?: React.ReactElement;
-  rightContent?: React.ReactElement;
+  leftContent?: React.ReactNode;
+  rightContent?: React.ReactNode;
 }
 
-export const Input = (props: Props) => {
+export const Input = observer((props: Props) => {
   const {containerStyle, ...inputProps} = props;
   const [focus, setFocus] = React.useState(false);
   const [secureTextEntry, setSecureTextEntry] = React.useState(
@@ -35,12 +37,12 @@ export const Input = (props: Props) => {
           setFocus(false);
         }}
         {...inputProps}
+        placeholder={LangModel.rk(inputProps.placeholder)}
         secureTextEntry={secureTextEntry}
         style={[styles.input, props.style]}
       />
       {props.secureTextEntry && (
-        <TouchableOpacity
-          style={styles.eye}
+        <Pressable
           onPress={() => {
             setSecureTextEntry(!secureTextEntry);
           }}>
@@ -49,12 +51,12 @@ export const Input = (props: Props) => {
               secureTextEntry ? COLORS.inputBorder : COLORS.inputFocusBorder
             }
           />
-        </TouchableOpacity>
+        </Pressable>
       )}
       {props.rightContent}
     </View>
   );
-};
+});
 
 const styles = StyleSheet.create({
   container: {

@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text,
   Pressable,
   StyleSheet,
   StyleProp,
@@ -8,6 +7,7 @@ import {
   TextStyle,
 } from 'react-native';
 import {COLORS} from 'styles/Colors';
+import {Text} from './Text';
 
 interface Props {
   title: string;
@@ -16,7 +16,7 @@ interface Props {
   titleStyle?: StyleProp<TextStyle>;
 }
 
-export function Button(props: Props) {
+export const Button = (props: Props) => {
   return (
     <Pressable
       onPress={props.onPress}
@@ -27,10 +27,10 @@ export function Button(props: Props) {
         }
         return style;
       }}>
-      <Text style={[styles.text, props.titleStyle]}>{props.title}</Text>
+      <Text style={[styles.text, props.titleStyle]} text={props.title} />
     </Pressable>
   );
-}
+};
 
 const styles = StyleSheet.create({
   content: {
@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
     color: COLORS.buttonTextColor,
     fontSize: 14,
     fontWeight: 'bold',
+    paddingHorizontal: 16,
   },
 });

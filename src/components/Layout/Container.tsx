@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, SafeAreaView, StyleProp, ViewStyle} from 'react-native';
+import {View, SafeAreaView, StyleProp, ViewStyle} from 'react-native';
 import {STYLES} from 'styles/Theme';
 import {observer} from 'mobx-react';
-import {AuthModel, LangModel} from 'models';
-import {Button} from 'components';
+import {AuthModel} from 'models';
+import {Button, Text} from 'components';
 
 interface Props {
   children: React.ReactNode;
@@ -16,8 +16,8 @@ export const Container = observer((props: Props) => {
   return (
     <SafeAreaView style={[STYLES.container, props.style]}>
       {props.needAuth && !AuthModel.isAuth ? (
-        <View>
-          <Text>{LangModel.rk('Войдите что бы чтобы')}</Text>
+        <View style={STYLES.contentCenter}>
+          <Text text="Войдите что бы чтобы" />
           <Button
             title="Войти"
             onPress={() => {
