@@ -23,7 +23,7 @@ export const CatalogScreen = observer((props: IScreenProps) => {
         title={item.name}
         onPress={() => {
           if (item.children && item.children.length) {
-            props.navigation.push('Catalog', {
+            props.navigation.push('Каталог', {
               categories: item.children,
               title: item.name,
             });

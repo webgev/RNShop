@@ -1,29 +1,36 @@
 import React from 'react';
-import {View, StyleSheet, Text, ScrollView, Pressable} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ScrollView,
+  Pressable,
+  Dimensions,
+  Image,
+} from 'react-native';
 import {observer} from 'mobx-react';
 import {COLORS} from 'styles/Colors';
 import {STYLES} from 'styles/Theme';
 import {CONSTANTS} from 'utils/Constants';
 import {Slider, Button, Text as LText} from 'components';
 
-const data = [
-  {
-    id: '1',
-    img: require('assets/images/product.jpg'),
-  },
-  {
-    id: '2',
-    img: require('assets/images/product.jpg'),
-  },
-];
-
+const data = [1, 2, 3];
 const sizes = [1, 2, 3, 4];
 
 export const ProductCard = observer(() => {
   const [activeSize, setActiveSize] = React.useState(0);
   return (
     <ScrollView>
-      <Slider images={data} />
+      <Slider>
+        {data.map(() => {
+          return (
+            <Image
+              source={require('assets/images/product.jpg')}
+              style={styles.image}
+            />
+          );
+        })}
+      </Slider>
       <View style={styles.content}>
         <Text style={[STYLES.title, STYLES.textXXL]}>
           Nike Air Zoom Pegasus 36 Miami
@@ -82,5 +89,10 @@ const styles = StyleSheet.create({
   },
   circleActive: {
     borderColor: COLORS.mainColor,
+  },
+  image: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height / 3,
+    resizeMode: 'cover',
   },
 });

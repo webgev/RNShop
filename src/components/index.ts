@@ -5,3 +5,4 @@ export {Link} from './Link';
 export {Slider} from './Slider';
 export {Search} from './Search';
 export {Text} from './Text';
+export {CategoriesList} from './CategoriesList';

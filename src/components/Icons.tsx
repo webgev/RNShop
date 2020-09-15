@@ -233,6 +233,37 @@ const Search = (props: SvgProps) => (
   </Svg>
 );
 
+const ManShirt = (props: SvgProps) => {
+  return (
+    <Svg width={20} height={20} viewBox="0 0 20 20" fill="none" {...props}>
+      <Path
+        d="M6.625 1h6.75L10 6.625 6.625 1zM13.375 1l2.25 2.25-2.25 6.75L10 6.625"
+        stroke="#40BFFF"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M4.375 3.25L1 4.375V19h18V4.375L15.625 3.25"
+        stroke="#40BFFF"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <Path
+        d="M10 19V6.625L6.625 10l-2.25-6.75L6.625 1"
+        stroke="#40BFFF"
+        strokeWidth={2}
+        strokeMiterlimit={10}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </Svg>
+  );
+};
+
 export default {
   Logo,
   Eye,
@@ -245,4 +276,5 @@ export default {
   Plus,
   Munis,
   Search,
+  ManShirt,
 };

@@ -1,22 +1,17 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen, ProductCardScreen, ProductListScreen} from 'screens';
-import {CONSTANTS} from 'utils/Constants';
-import {headerTitle} from './HeaderTitle';
+import {headerOptions} from './HeaderOptions';
 
 const Stack = createStackNavigator();
 
 export const HomeStack = () => {
   return (
-    <Stack.Navigator
-      initialRouteName="Home"
-      screenOptions={CONSTANTS.headerOptions}>
+    <Stack.Navigator initialRouteName="Главная" screenOptions={headerOptions}>
       <Stack.Screen
-        name="Home"
+        name="Главная"
         component={HomeScreen}
-        options={{
-          title: headerTitle('Главная'),
-        }}
+        options={{headerShown: false}}
       />
       <Stack.Screen name="ProductCard" component={ProductCardScreen} />
       <Stack.Screen name="ProductList" component={ProductListScreen} />

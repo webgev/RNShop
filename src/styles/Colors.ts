@@ -22,6 +22,7 @@ const inputBorder = greyLight;
 const inputFocusBorder = '#B6C8FF';
 
 const tabBarBackgroundColor = '#ffffff';
+const black = '#020202';
 
 export const COLORS = {
   backgroundColor,
@@ -35,4 +36,5 @@ export const COLORS = {
   greyLight,
   greyDark,
   tabBarBackgroundColor,
+  black,
 };

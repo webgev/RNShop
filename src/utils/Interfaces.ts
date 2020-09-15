@@ -1,3 +1,5 @@
+import {ParamListBase, RouteProp} from '@react-navigation/native';
+
 export interface IScreenProps {
   navigation: any;
   route: any;
@@ -22,3 +24,5 @@ export interface ICategory {
   parent_id: string;
   thumb: string;
 }
+
+export type IRoute = RouteProp<any, string>;

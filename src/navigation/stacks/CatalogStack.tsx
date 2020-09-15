@@ -1,23 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {CatalogScreen, ProductListScreen, ProductCardScreen} from 'screens';
-import {CONSTANTS} from 'utils/Constants';
-import {headerTitle} from './HeaderTitle';
+import {headerOptions} from './HeaderOptions';
 
 const Stack = createStackNavigator();
 
 export function CatalogStack() {
   return (
-    <Stack.Navigator
-      initialRouteName="Catalog"
-      screenOptions={CONSTANTS.headerOptions}>
-      <Stack.Screen
-        name="Catalog"
-        component={CatalogScreen}
-        options={{
-          title: headerTitle('Каталог'),
-        }}
-      />
+    <Stack.Navigator initialRouteName="Каталог" screenOptions={headerOptions}>
+      <Stack.Screen name="Каталог" component={CatalogScreen} />
       <Stack.Screen name="ProductList" component={ProductListScreen} />
       <Stack.Screen name="ProductCard" component={ProductCardScreen} />
     </Stack.Navigator>

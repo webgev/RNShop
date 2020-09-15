@@ -4,7 +4,7 @@ import {IUserInfo, ICategory} from './Interfaces';
 const URI = 'https://app.buymeua.com/index.php?route=';
 const STATIC_URI = '';
 const TOKEN =
-  '31b5MAVbxTGSkNC5xXvQD8XlXfLV1vziJ6eWXoR6MYQneVFPMghJncsv2aje2FylMrw0n7UesN8NS5odcImVDJ2THUCuGnxrITjuCoxhqT4tRYW8uOmgotqCeLhp1Ue8ciEhALjNlcmRxrkAYXdAvuN1wfQ3eAfgBxWmOejh3h3ruoEW3JMn2zXzMlU725T6eMVbCmOsWCSC5ZeWacqU5SO0tJWjFGjLo3Vq7Xo7q2Ti56G3JsrrKdXXEvWaUhtH';
+  '';
 
 export class Api {
   static async invoke<T>(

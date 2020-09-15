@@ -16,6 +16,8 @@ export const TabsScreen = () => (
         switch (route.name) {
           case 'Home':
             return <Icons.Home color={color} />;
+          case 'Catalog':
+            return <Icons.Search color={color} width={20} height={20} />;
           case 'Cart':
             return <Icons.Cart color={color} />;
           case 'User':

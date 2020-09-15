@@ -1,23 +1,14 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {CartScreen, ProductCardScreen} from 'screens';
-import {CONSTANTS} from 'utils/Constants';
-import {headerTitle} from './HeaderTitle';
+import {headerOptions} from './HeaderOptions';
 
 const Stack = createStackNavigator();
 
 export function CartStack() {
   return (
-    <Stack.Navigator
-      initialRouteName="Cart"
-      screenOptions={CONSTANTS.headerOptions}>
-      <Stack.Screen
-        name="Cart"
-        component={CartScreen}
-        options={{
-          title: headerTitle('Корзина'),
-        }}
-      />
+    <Stack.Navigator initialRouteName="Cart" screenOptions={headerOptions}>
+      <Stack.Screen name="Корзина" component={CartScreen} />
       <Stack.Screen name="ProductCard" component={ProductCardScreen} />
     </Stack.Navigator>
   );

@@ -15,6 +15,7 @@ import {COLORS} from 'styles/Colors';
 import {Icons} from 'components';
 import {IProduct} from 'utils/Interfaces';
 import {NavigationControl} from 'utils/NavigationControl';
+import { Item } from 'components/Products';
 
 interface Props {
   product: IProduct;
@@ -29,7 +30,7 @@ export const CartItem = (props: Props) => {
       style={[STYLES.flexRow, styles.cart, style]}
       activeOpacity={0.8}
       onPress={() => {
-        NavigationControl.navigate('ProductCard');
+        NavigationControl.navigate('ProductCard', {title: product.name});
       }}>
       <Image source={{uri: product.images[0]}} style={styles.image} />
       <View style={[STYLES.spaceBetween, styles.content]}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, View, Image, StyleSheet, Dimensions} from 'react-native';
+import {FlatList, View, StyleSheet, Dimensions} from 'react-native';
 import {COLORS} from 'styles/Colors';
 
 interface IImage {
@@ -7,12 +7,10 @@ interface IImage {
   img: any;
 }
 interface Props {
-  images: IImage[];
+  children: React.ReactNode[];
 }
-const renderItem = ({item}: {item: IImage}) => (
-  <View style={styles.row}>
-    <Image source={item.img} style={styles.image} />
-  </View>
+const renderItem = ({item}: {item: React.ReactNode}) => (
+  <View style={styles.row}>{item}</View>
 );
 
 export const Slider = (props: Props) => {
@@ -21,7 +19,7 @@ export const Slider = (props: Props) => {
   return (
     <>
       <FlatList
-        data={props.images}
+        data={props.children}
         renderItem={renderItem}
         horizontal
         pagingEnabled
@@ -35,9 +33,9 @@ export const Slider = (props: Props) => {
         }}
       />
       <View style={styles.circleContent}>
-        {props.images.map((item: any, i: number) => (
+        {props.children.map((item: any, i: number) => (
           <View
-            key={item.id}
+            key={i}
             style={[styles.circle, i === index && styles.circleActive]}
           />
         ))}

@@ -1,14 +1,17 @@
 import React from 'react';
-import {View} from 'react-native';
+import {StyleProp, View, ViewStyle} from 'react-native';
 import {Input} from './Input';
 import {Icons} from 'components';
 import {COLORS} from 'styles/Colors';
-import {STYLES} from 'styles/Theme';
 
-export const Search = () => {
+interface Props {
+  style?: StyleProp<ViewStyle>;
+}
+
+export const Search = (props: Props) => {
   const [value, setValue] = React.useState('');
   return (
-    <View style={STYLES.paddingHorizontal}>
+    <View style={props.style}>
       <Input
         placeholder="Поиск"
         placeholderTextColor={COLORS.grey}
